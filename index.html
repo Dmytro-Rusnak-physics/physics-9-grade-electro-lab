@@ -1,1 +1,178 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><title>ELECTRO LAB</title></head><body><h1>ELECTRO LAB</h1><p>Файл для лабораторної роботи № 4. Повна версія буде додана окремим оновленням.</p></body></html>
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELECTRO LAB — Лабораторна робота №4</title>
+<style>
+:root{--bg:#09111f;--panel:#111d30;--panel2:#17263d;--line:#2b405e;--text:#edf4ff;--muted:#9db0ca;--cyan:#54d8e8;--blue:#6e9cff;--green:#5cdda1;--yellow:#ffd166;--red:#ff7b86;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#17345a 0%,transparent 60%),linear-gradient(160deg,#08101c,#0c1728 60%,#101d31);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 18px;font-weight:750;color:#071321;background:linear-gradient(135deg,var(--cyan),#78a8ff);box-shadow:0 7px 22px #0004;transition:.18s}button:hover{transform:translateY(-1px);filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}.secondary{background:#243650;color:var(--text);box-shadow:none;border:1px solid var(--line)}.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);box-shadow:none}.wrap{max-width:1120px;margin:auto;padding:28px 18px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.12em}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#3dd6e8,#668eff);display:grid;place-items:center;color:#071321;font-size:23px}.pill{border:1px solid var(--line);color:var(--muted);padding:7px 11px;border-radius:999px;font-size:13px}.hero{padding:30px;border:1px solid #29405f;border-radius:24px;background:linear-gradient(125deg,#142640ee,#102036ee);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #5bd9e822;border-radius:50%;right:-70px;top:-100px;box-shadow:0 0 0 25px #5bd9e80a,0 0 0 55px #5bd9e807}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.02;margin:10px 0}.hero p{color:var(--muted);max-width:670px;margin:12px 0 22px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:18px}.card{background:linear-gradient(160deg,#142238,#101c2e);border:1px solid var(--line);border-radius:var(--radius);padding:20px;min-width:0}.span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}.span12{grid-column:span 12}.card h2,.card h3{margin:0 0 10px}.muted{color:var(--muted)}.small{font-size:13px}.field{display:grid;gap:6px;margin:14px 0}.field label{font-size:13px;color:var(--muted);font-weight:700}.field input{width:100%;background:#091526;border:1px solid var(--line);border-radius:11px;padding:12px;color:var(--text);outline:none}.field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #54d8e822}.level-list{display:grid;gap:9px}.level{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:13px;background:#0c192b}.num{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#203754;color:var(--cyan);font-weight:900}.level.done .num{background:#174a3d;color:var(--green)}.level .desc{flex:1}.level strong{display:block}.level small{color:var(--muted)}.progress{height:8px;background:#263750;border-radius:20px;overflow:hidden;margin:12px 0}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--green));transition:.3s}.statrow{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:13px}.screen{display:none}.screen.active{display:block}.sectionhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:18px}.sectionhead h2{font-size:clamp(23px,4vw,32px);margin:0}.tag{font-size:12px;color:var(--cyan);border:1px solid #2a6471;padding:5px 9px;border-radius:999px;white-space:nowrap}.question{background:#0b1829;border:1px solid var(--line);padding:16px;border-radius:14px;margin:14px 0}.options{display:grid;gap:8px;margin-top:12px}.option{display:flex;gap:10px;align-items:flex-start;text-align:left;background:#17283f;border:1px solid #2b405e;color:var(--text);box-shadow:none;padding:12px;border-radius:11px;font-weight:550}.option.selected{border-color:var(--cyan);background:#17364a}.option.correct{border-color:var(--green)}.option.wrong{border-color:var(--red)}.option input{accent-color:var(--cyan);margin-top:4px}.feedback{margin-top:10px;padding:11px 13px;border-radius:10px;background:#132b3b;color:var(--muted);font-size:14px}.feedback.good{color:var(--green);background:#103329}.feedback.bad{color:#ffb1b7;background:#391e2b}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.labvisual{background:radial-gradient(500px 240px at 50% 45%,#173c5b,#0a1728 70%);border:1px solid var(--line);border-radius:16px;padding:16px;min-height:230px;display:grid;place-items:center;position:relative;overflow:hidden}.coil{width:210px;height:72px;border-radius:35px;border:8px solid #bd7b3d;position:relative;background:repeating-linear-gradient(90deg,transparent 0 8px,#d79a59 9px 12px,transparent 13px 17px);box-shadow:inset 0 0 0 5px #70472e,0 10px 28px #0008}.core{position:absolute;left:-22px;right:-22px;top:23px;height:19px;background:linear-gradient(#aebdca,#5f7182,#c3d0d8);border-radius:5px;z-index:0}.pole{position:absolute;top:-34px;font-weight:900;font-size:15px;color:var(--red)}.pole.right{right:0;color:var(--blue)}.fieldline{position:absolute;border:1px dashed #5bd9e8aa;border-radius:50%;width:280px;height:120px;transform:rotate(-12deg);pointer-events:none}.fieldline.two{width:330px;height:160px;transform:rotate(12deg)}.metalbits{display:flex;gap:5px;justify-content:center;margin-top:20px;flex-wrap:wrap}.bit{width:12px;height:26px;border-radius:3px;background:linear-gradient(90deg,#8395a8,#dce5ed,#6c7b8a);transform:rotate(12deg)}.metric{font-size:36px;font-weight:900;color:var(--cyan);line-height:1}.sliderrow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;margin:15px 0}.sliderrow input{grid-column:1/-1;width:100%;accent-color:var(--cyan)}.value{font-weight:900;color:var(--cyan);font-variant-numeric:tabular-nums}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:700}td{font-variant-numeric:tabular-nums}.resultrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.resultrow:last-child{border:0}.notice{border-left:3px solid var(--yellow);padding:10px 13px;background:#302a1b;color:#e8d8a7;border-radius:0 10px 10px 0;font-size:13px;margin:12px 0}.badge{display:inline-block;background:#173d36;color:var(--green);padding:4px 8px;border-radius:8px;font-size:12px;font-weight:800}.hidden{display:none!important}.finalscore{font-size:64px;font-weight:950;line-height:1;color:var(--green)}.footer{text-align:center;color:#7186a4;font-size:12px;margin-top:28px}
+@media(max-width:760px){.span8,.span4,.span6{grid-column:span 12}.hero{padding:22px}.top{align-items:flex-start;flex-direction:column}.card{padding:16px}.sectionhead{flex-direction:column}.wrap{padding:18px 12px 40px}}
+@media print{body{background:white;color:#111}.top,.hero,.actions,button{display:none!important}.card{background:white;color:#111;border:1px solid #aaa}.muted,th{color:#444}.screen{display:none!important}#screen-final{display:block!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">ϟ</div><div>ELECTRO LAB <div class="small muted" style="letter-spacing:0">ВІРТУАЛЬНА ФІЗИЧНА ЛАБОРАТОРІЯ</div></div></div>
+    <div class="pill">Лабораторна робота № 4 · 8–9 клас</div>
+  </header>
+
+  <section id="screen-start" class="screen active">
+    <div class="hero">
+      <div class="eyebrow">Інженерна місія · 5 рівнів</div>
+      <h1>Створи<br>найкращий електромагніт</h1>
+      <p>Твоя команда отримала завдання: створити електромагніт для підйомного крана. Досліди, від чого залежить його магнітна дія, перевір гіпотези та пройди фінальне випробування.</p>
+      <button onclick="startLab()">Розпочати місію →</button>
+    </div>
+    <div class="grid">
+      <div class="card span8">
+        <h2>Перед початком</h2>
+        <p class="muted">Введи свої дані. Усі результати та оцінка формуються автоматично в цьому браузері.</p>
+        <div class="field"><label for="student">Прізвище та ім’я</label><input id="student" placeholder="Наприклад: Іваненко Максим" autocomplete="name"></div>
+        <div class="field"><label for="className">Клас</label><input id="className" placeholder="Наприклад: 9-А"></div>
+        <div class="notice">Увага: це навчальна симуляція. Кількість скріпок є умовним показником магнітної дії, а не реальним вимірюванням сили.</div>
+      </div>
+      <div class="card span4">
+        <h3>Твої завдання</h3>
+        <div class="level-list">
+          <div class="level"><span class="num">1</span><div class="desc"><strong>Запуск системи</strong><small>Коло та магнітні полюси</small></div></div>
+          <div class="level"><span class="num">2</span><div class="desc"><strong>Контроль струму</strong><small>0,5 А та 1,5 А</small></div></div>
+          <div class="level"><span class="num">3</span><div class="desc"><strong>Кількість витків</strong><small>40 та 80 витків</small></div></div>
+          <div class="level"><span class="num">4</span><div class="desc"><strong>Матеріал осердя</strong><small>Залізо та дерево</small></div></div>
+          <div class="level"><span class="num">5</span><div class="desc"><strong>Фінальний тест</strong><small>Інженерне випробування</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-lab" class="screen">
+    <div class="grid">
+      <div class="card span4">
+        <div class="statrow"><span id="studentLabel">Учень</span><span id="levelLabel">Рівень 1/5</span></div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="statrow"><span>Набрано балів</span><strong id="scoreLabel" style="color:var(--green)">0 / 12</strong></div>
+        <div class="level-list" style="margin-top:17px" id="levelNav">
+          <div class="level" id="nav0"><span class="num">1</span><div class="desc"><strong>Запуск системи</strong><small>Полюси електромагніта</small></div></div>
+          <div class="level" id="nav1"><span class="num">2</span><div class="desc"><strong>Контроль струму</strong><small>Сила струму</small></div></div>
+          <div class="level" id="nav2"><span class="num">3</span><div class="desc"><strong>Більше витків</strong><small>Кількість витків</small></div></div>
+          <div class="level" id="nav3"><span class="num">4</span><div class="desc"><strong>Секрет осердя</strong><small>Матеріал осердя</small></div></div>
+          <div class="level" id="nav4"><span class="num">5</span><div class="desc"><strong>Фінальне випробування</strong><small>Застосуй знання</small></div></div>
+        </div>
+        <button class="ghost" style="width:100%;margin-top:16px" onclick="if(confirm('Перезапустити роботу? Усі результати буде втрачено.')) location.reload()">Почати спочатку</button>
+      </div>
+      <div class="card span8">
+        <div id="levelContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-final" class="screen">
+    <div class="hero">
+      <div class="eyebrow">Місію завершено</div>
+      <h1>Звіт інженера</h1>
+      <p id="finalStudent" class="muted"></p>
+      <div class="finalscore"><span id="finalScore">0</span><span style="font-size:25px;color:var(--muted)"> / 12</span></div>
+      <p id="gradeText" style="font-weight:800;color:var(--green)"></p>
+    </div>
+    <div class="grid">
+      <div class="card span6">
+        <h2>Результати досліджень</h2>
+        <div id="finalResults"></div>
+      </div>
+      <div class="card span6">
+        <h2>Висновок лабораторної</h2>
+        <p class="muted small">На основі виконаних дослідів встановлено:</p>
+        <ul id="conclusionList" class="muted"></ul>
+      </div>
+      <div class="card span12">
+        <h2>Підсумок роботи</h2>
+        <p id="feedbackFinal" class="muted"></p>
+        <div class="actions">
+          <button onclick="copyReport()">Скопіювати звіт</button>
+          <button class="secondary" onclick="downloadReport()">Завантажити TXT</button>
+          <button class="ghost" onclick="window.print()">Друк</button>
+          <button class="ghost" onclick="location.reload()">Нова спроба</button>
+        </div>
+        <p class="small muted" id="copyStatus" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+  <div class="footer">ELECTRO LAB · Навчальна симуляція з фізики · Лабораторна робота № 4</div>
+</div>
+
+<script>
+const state={name:'',klass:'',level:0,score:0,awards:[false,false,false,false,false,false],attempts:{},answers:{},data:{},started:false};
+const levelNames=['Запуск системи','Контроль струму','Більше витків','Секрет осердя','Фінальне випробування'];
+const points=[2,2,2,2,2,2];
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function startLab(){const n=document.getElementById('student').value.trim(),k=document.getElementById('className').value.trim();if(!n){alert('Введи прізвище та ім’я.');return}state.name=n;state.klass=k||'—';state.started=true;document.getElementById('studentLabel').textContent=n;show('screen-lab');renderLevel()}
+function updateStats(){document.getElementById('scoreLabel').textContent=state.score+' / 12';document.getElementById('levelLabel').textContent='Рівень '+(state.level+1)+'/5';document.getElementById('progressBar').style.width=(state.level/5*100)+'%';for(let i=0;i<5;i++){document.getElementById('nav'+i).classList.toggle('done',i<state.level)}}
+function award(index,pts){if(!state.awards[index]){state.awards[index]=true;state.score+=pts}updateStats()}
+function shell(title,desc,tag,body){return `<div class="sectionhead"><div><div class="eyebrow">РІВЕНЬ ${state.level+1} · ${desc}</div><h2>${title}</h2></div><span class="tag">${tag}</span></div>${body}`}
+function renderLevel(){updateStats();const c=document.getElementById('levelContent');if(state.level===0)c.innerHTML=level1();if(state.level===1)c.innerHTML=level2();if(state.level===2)c.innerHTML=level3();if(state.level===3)c.innerHTML=level4();if(state.level===4)c.innerHTML=level5()}
+function quiz(id,question,opts,correct,explain){const chosen=state.answers[id];return `<div class="question"><strong>${question}</strong><div class="options">${opts.map((o,i)=>`<label class="option ${chosen===i?'selected':''}" onclick="selectOption('${id}',${i})"><input type="radio" name="${id}" ${chosen===i?'checked':''}><span>${o}</span></label>`).join('')}</div><div id="fb-${id}" class="feedback ${state.data['fb-'+id]||''}">${state.data['msg-'+id]||'Обери відповідь.'}</div><div class="actions"><button class="secondary" onclick="checkQuiz('${id}',${correct},'${encodeURIComponent(explain)}')">Перевірити</button></div></div>`}
+function selectOption(id,i){state.answers[id]=i;const el=document.getElementById('levelContent');const selected=el.querySelectorAll(`input[name="${id}"]`);selected.forEach((x,j)=>{x.checked=j===i;x.parentElement.classList.toggle('selected',j===i)})}
+function checkQuiz(id,correct,encoded){if(state.answers[id]===undefined){alert('Спочатку обери відповідь.');return}const n=(state.attempts[id]||0)+1;state.attempts[id]=n;const ok=state.answers[id]===correct;const fb=document.getElementById('fb-'+id);if(ok){fb.className='feedback good';fb.textContent='Правильно! '+decodeURIComponent(encoded);awardForQuiz(id)}else{fb.className='feedback bad';fb.textContent=n===1?'Не зовсім. Спробуй ще раз — подумай над підказкою: '+decodeURIComponent(encoded):'Цього разу не вийшло. Правильна відповідь: '+decodeURIComponent(encoded);if(n>=2)state.data['failed-'+id]=true}}
+function awardForQuiz(id){const map={q1:0,q2:1,q3:2,q4:3,q5:5,q6:5};if(map[id]!==undefined)award(map[id],id==='q1'?1:id==='q5'?1:1)}
+function nextLevel(){state.level++;if(state.level>4){finish()}else renderLevel()}
+function level1(){return shell('Запусти електромагніт','Збери коло та досліди полюси','2 бали',`
+<p class="muted">Електромагніт складається з котушки дроту, джерела струму та осердя. Замкни коло, щоб котушка стала магнітом.</p>
+<div class="labvisual"><div class="fieldline"></div><div class="fieldline two"></div><div style="position:relative;text-align:center"><div class="pole" style="left:0">N</div><div class="pole right">S</div><div class="core"></div><div class="coil"></div><div class="metalbits">${'<i class="bit"></i>'.repeat(9)}</div></div></div>
+${quiz('q1','Що потрібно зробити, щоб змінити магнітні полюси електромагніта на протилежні?',['Збільшити кількість витків удвічі','Змінити напрямок струму в котушці','Замінити залізне осердя дерев’яним'],1,'Потрібно змінити напрямок струму в обмотці. Тоді північний і південний полюси поміняються місцями.')}
+${quiz('q2','Коли котушка зі струмом проявляє магнітні властивості?',['Коли через неї проходить електричний струм','Лише коли вона нагрівається','Лише коли її торкається магніт'],0,'Магнітне поле котушки виникає під час проходження електричного струму.')}
+<div class="actions"><button onclick="award(0,2);nextLevel()">Перейти до рівня 2 →</button></div>`)}
+function level2(){return shell('Контроль сили струму','Досліди вплив сили струму','2 бали',`
+<p class="muted">Використовуй котушку з 80 витками та залізним осердям. Зміни силу струму і порівняй умовну кількість скріпок, які може притягнути електромагніт.</p>
+<div class="grid" style="margin:0"><div class="span6"><div class="labvisual" style="min-height:190px"><div><div class="coil"></div><div class="metalbits">${'<i class="bit"></i>'.repeat(7)}</div></div></div><div class="small muted">Електромагніт: 80 витків · залізне осердя</div></div><div class="span6 card" style="padding:15px"><div class="small muted">Сила струму</div><div class="metric" id="currentValue">0,5 А</div><div class="sliderrow"><span>0,5 А</span><span>1,5 А</span><input id="currentSlider" type="range" min="0.5" max="1.5" step="0.5" value="0.5" oninput="simulateCurrent()"></div><div class="small muted">Умовна магнітна дія</div><div class="metric"><span id="clipCount">3</span><span style="font-size:16px"> скріпки</span></div><button class="secondary" onclick="recordCurrent()">Зафіксувати результат</button></div></div>
+<div class="question"><strong>Запиши обидва результати, змінивши силу струму на 0,5 А та 1,5 А.</strong><div class="tablewrap"><table><thead><tr><th>Сила струму</th><th>Кількість скріпок (умовно)</th></tr></thead><tbody id="currentTable"><tr><td>0,5 А</td><td>—</td></tr><tr><td>1,5 А</td><td>—</td></tr></tbody></table></div><div class="feedback" id="currentFeedback">Зміни значення повзунка та натисни «Зафіксувати результат» для обох значень.</div></div>
+${quiz('q3','Як змінюється магнітна дія електромагніта зі збільшенням сили струму?',['Зменшується','Не змінюється','Збільшується'],2,'За інших однакових умов зі збільшенням сили струму магнітна дія електромагніта посилюється.')}
+<div class="actions"><button onclick="completeCurrent()">Завершити рівень →</button></div>`)}
+function simulateCurrent(){const v=+document.getElementById('currentSlider').value;document.getElementById('currentValue').textContent=v.toFixed(1).replace('.',',')+' А';document.getElementById('clipCount').textContent=v===0.5?3: v===1?6:9}
+function recordCurrent(){const v=+document.getElementById('currentSlider').value;state.data.curr=state.data.curr||{};state.data.curr[v]=v===0.5?3:v===1?6:9;const rows=[0.5,1.5].map(x=>`<tr><td>${x.toFixed(1).replace('.',',')} А</td><td>${state.data.curr[x]??'—'}</td></tr>`).join('');document.getElementById('currentTable').innerHTML=rows;document.getElementById('currentFeedback').textContent='Результат збережено. Тепер перевір інше значення сили струму.'}
+function completeCurrent(){if(!state.data.curr||state.data.curr[0.5]===undefined||state.data.curr[1.5]===undefined){alert('Зафіксуй результати для 0,5 А та 1,5 А.');return}award(1,2);nextLevel()}
+function level3(){return shell('Більше витків — сильніший магніт?','Досліди вплив кількості витків','2 бали',`
+<p class="muted">Порівняй дві котушки за однакової сили струму 1,5 А та однакового залізного осердя. Змінюй тільки кількість витків.</p>
+<div class="grid" style="margin:0"><div class="span6 card" style="text-align:center"><div class="eyebrow">Котушка A</div><div class="metric">40</div><div class="muted">витків</div><div class="coil" style="margin:18px auto;width:150px"></div><div class="metric" style="font-size:25px">5 скріпок</div></div><div class="span6 card" style="text-align:center"><div class="eyebrow">Котушка B</div><div class="metric">80</div><div class="muted">витків</div><div class="coil" style="margin:18px auto;width:190px"></div><div class="metric" style="font-size:25px">9 скріпок</div></div></div>
+<div class="notice">У моделі значення 5 і 9 — умовні результати порівняльного досліду. Сила струму та матеріал осердя однакові.</div>
+${quiz('q4','Що відбудеться, якщо збільшити кількість витків у котушці за незмінної сили струму?',['Магнітна дія посилиться','Магнітна дія послабиться','Магнітне поле зникне'],0,'За інших однакових умов більша кількість витків підсилює магнітну дію котушки.')}
+<div class="question"><strong>Обери правильний висновок за результатами порівняння.</strong><div class="options"><label class="option"><input type="radio" name="turns" value="1">Котушка з 40 витками сильніша</label><label class="option"><input type="radio" name="turns" value="2">Котушка з 80 витками сильніша</label><label class="option"><input type="radio" name="turns" value="3">Кількість витків не має значення</label></div><div class="feedback" id="turnsFb">Обери один варіант.</div><button class="secondary" onclick="checkTurns()">Перевірити</button></div>
+<div class="actions"><button onclick="completeTurns()">Завершити рівень →</button></div>`)}
+function checkTurns(){const v=document.querySelector('input[name="turns"]:checked');const f=document.getElementById('turnsFb');if(!v){f.textContent='Спочатку обери відповідь.';return}if(v.value==='2'){f.className='feedback good';f.textContent='Правильно: за однакової сили струму котушка з 80 витками має сильнішу магнітну дію.';state.data.turnsOk=true}else{f.className='feedback bad';f.textContent='Порівняй умовні результати: 5 та 9 скріпок.'}}
+function completeTurns(){if(!state.data.turnsOk){alert('Дай правильну відповідь у порівнянні котушок.');return}award(2,2);nextLevel()}
+function level4(){return shell('Секрет осердя','Досліди матеріал осердя','2 бали',`
+<p class="muted">Залиш незмінними котушку (80 витків) і силу струму (1,5 А). Порівняй магнітну дію з осердям із заліза та без залізного осердя — на дерев’яному олівці.</p>
+<div class="grid" style="margin:0"><div class="span6 card" style="text-align:center"><div class="eyebrow">Залізне осердя</div><div class="labvisual" style="min-height:150px"><div><div class="coil"></div><div class="metalbits">${'<i class="bit"></i>'.repeat(10)}</div></div></div><div class="metric" style="margin-top:10px">10</div><div class="muted">умовних скріпок</div></div><div class="span6 card" style="text-align:center"><div class="eyebrow">Дерев’яне осердя</div><div class="labvisual" style="min-height:150px"><div><div class="coil" style="border-color:#a87845"></div><div class="metalbits">${'<i class="bit"></i>'.repeat(2)}</div></div></div><div class="metric" style="margin-top:10px">2</div><div class="muted">умовні скріпки</div></div></div>
+<div class="notice">Модель демонструє якісну різницю: феромагнітне залізне осердя значно підсилює магнітну дію котушки.</div>
+${quiz('q5','Чому електромагніт із залізним осердям сильніший, ніж котушка на дерев’яному олівці?',['Залізо підсилює магнітне поле котушки','Дерево проводить струм краще за залізо','Олівець збільшує опір повітря'],0,'Залізо є феромагнітним матеріалом і значно підсилює магнітне поле котушки.')}
+<div class="question"><strong>Який матеріал доцільніше використати як осердя електромагніта?</strong><div class="options"><label class="option"><input type="radio" name="core" value="wood">Дерево</label><label class="option"><input type="radio" name="core" value="iron">Залізо</label><label class="option"><input type="radio" name="core" value="plastic">Пластмасу</label></div><div class="feedback" id="coreFb">Обери матеріал.</div><button class="secondary" onclick="checkCore()">Перевірити</button></div>
+<div class="actions"><button onclick="completeCore()">Завершити рівень →</button></div>`)}
+function checkCore(){const v=document.querySelector('input[name="core"]:checked');const f=document.getElementById('coreFb');if(!v){f.textContent='Обери матеріал.';return}if(v.value==='iron'){f.className='feedback good';f.textContent='Так! Залізне осердя підсилює магнітну дію.';state.data.coreOk=true}else{f.className='feedback bad';f.textContent='Підказка: шукай феромагнітний матеріал.'}}
+function completeCore(){if(!state.data.coreOk){alert('Обери правильний матеріал осердя.');return}award(3,2);nextLevel()}
+function level5(){return shell('Фінальне інженерне випробування','Створи найсильніший електромагніт','2 бали',`
+<p class="muted">Підйомний кран має підняти важкий металевий вантаж. Налаштуй електромагніт так, щоб отримати максимальну магнітну дію в межах доступних параметрів.</p>
+<div class="card" style="background:#0b1829">
+<div class="sliderrow"><strong>Сила струму</strong><span class="value" id="finI">0,5 А</span><input id="finCurrent" type="range" min="0.5" max="1.5" step="0.5" value="0.5" oninput="updateFinalSim()"></div>
+<div class="sliderrow"><strong>Кількість витків</strong><span class="value" id="finN">40</span><input id="finTurns" type="range" min="40" max="80" step="40" value="40" oninput="updateFinalSim()"></div>
+<div class="field"><label for="finCore">Матеріал осердя</label><select id="finCore" onchange="updateFinalSim()" style="width:100%;padding:12px;border-radius:10px;background:#091526;color:var(--text);border:1px solid var(--line)"><option value="wood">Дерев’яний олівець</option><option value="iron">Залізний стрижень</option></select></div>
+<div class="labvisual" style="min-height:170px"><div><div class="coil" id="finalCoil"></div><div class="metalbits" id="finalBits"></div></div></div>
+<div style="display:flex;justify-content:space-between;align-items:end;margin-top:14px"><div><div class="small muted">Розрахункова магнітна дія (умовні одиниці)</div><div class="metric" id="finalPower">2</div></div><div class="tag" id="targetStatus">Потрібно 9+</div></div>
+<div class="progress"><i id="powerBar"></i></div>
+</div>
+${quiz('q6','Яка комбінація забезпечить найбільшу магнітну дію?',['0,5 А · 40 витків · дерево','1,5 А · 80 витків · залізо','1,5 А · 40 витків · дерево'],1,'Найсильніша конфігурація в цій моделі: більша сила струму, більше витків і залізне осердя.')}
+<div class="actions"><button onclick="finishChallenge()">Перевірити конструкцію та завершити →</button></div>`)}
+function updateFinalSim(){const i=+document.getElementById('finCurrent').value,n=+document.getElementById('finTurns').value,core=document.getElementById('finCore').value;const power=Math.round(i/0.5*(n/40)*(core==='iron'?1.5:0.35)*4);document.getElementById('finI').textContent=i.toFixed(1).replace('.',',')+' А';document.getElementById('finN').textContent=n;document.getElementById('finalPower').textContent=power;document.getElementById('powerBar').style.width=Math.min(100,power/18*100)+'%';document.getElementById('targetStatus').textContent=power>=9?'Вантаж піднято!':'Потрібно 9+';document.getElementById('targetStatus').style.color=power>=9?'var(--green)':'var(--yellow)';document.getElementById('finalBits').innerHTML='<i class="bit"></i>'.repeat(Math.min(18,Math.max(1,power)))}
+function finishChallenge(){const i=+document.getElementById('finCurrent').value,n=+document.getElementById('finTurns').value,core=document.getElementById('finCore').value;const power=Math.round(i/0.5*(n/40)*(core==='iron'?1.5:0.35)*4);if(power<9){alert('Електромагніт недостатньо сильний. Спробуй збільшити силу струму, кількість витків або використати залізне осердя.');return}if(state.answers.q6!==1){alert('Спочатку правильно відповідай на контрольне запитання фінального рівня.');return}award(4,2);state.data.finalConfig={i,n,core,power};finish()}
+function finish(){state.level=5;updateStats();document.getElementById('finalStudent').textContent=state.name+' · '+state.klass+' · '+new Date().toLocaleDateString('uk-UA');document.getElementById('finalScore').textContent=state.score;const grade=state.score>=11?'Відмінно! Ти впевнено впорався з місією.':state.score>=9?'Дуже добре! Основні закономірності засвоєно.':state.score>=7?'Добре! Варто ще раз повторити окремі властивості електромагніта.':'Місію завершено. Переглянь висновки та повтори дослідження.';document.getElementById('gradeText').textContent=grade;
+const rows=[['Запуск системи',state.awards[0]?'Виконано · 2 бали':'Не зараховано'],['Сила струму',state.awards[1]?'Виконано · 2 бали':'Не зараховано'],['Кількість витків',state.awards[2]?'Виконано · 2 бали':'Не зараховано'],['Матеріал осердя',state.awards[3]?'Виконано · 2 бали':'Не зараховано'],['Фінальне випробування',state.awards[4]?'Виконано · 2 бали':'Не зараховано'],['Контрольні запитання',state.awards[5]?'Виконано · 2 бали':'Частково / не зараховано']];
+document.getElementById('finalResults').innerHTML=rows.map(r=>`<div class="resultrow"><span>${r[0]}</span><strong>${r[1]}</strong></div>`).join('');
+document.getElementById('conclusionList').innerHTML='<li>Електромагніт — це котушка зі струмом, магнітна дія якої може посилюватися осердям.</li><li>Для зміни полюсів потрібно змінити напрямок струму в котушці.</li><li>Зі збільшенням сили струму магнітна дія посилюється.</li><li>Зі збільшенням кількості витків магнітна дія посилюється.</li><li>Залізне осердя підсилює магнітну дію порівняно з дерев’яним.</li>';
+document.getElementById('feedbackFinal').textContent=grade+' Підсумкова оцінка розрахована за виконаними рівнями та контрольними завданнями.';show('screen-final')}
+function reportText(){const d=new Date().toLocaleDateString('uk-UA');return `ELECTRO LAB — Лабораторна робота № 4\nТема: Виготовлення електромагніта та вивчення його магнітного поля\nУчень: ${state.name}\nКлас: ${state.klass}\nДата: ${d}\nРезультат: ${state.score}/12 балів\n\nРезультати досліджень:\n- Сила струму 0,5 А та 1,5 А: ${state.data.curr?JSON.stringify(state.data.curr):'не зафіксовано'}\n- Порівняння 40 та 80 витків: 80 витків дають сильнішу магнітну дію.\n- Осердя: залізо підсилює магнітну дію порівняно з деревом.\n- Фінальна конфігурація: ${state.data.finalConfig?`${state.data.finalConfig.i} А, ${state.data.finalConfig.n} витків, ${state.data.finalConfig.core==='iron'?'залізне осердя':'дерев’яне осердя'}, умовна дія ${state.data.finalConfig.power}`:'не виконано'}\n\nВисновок: магнітна дія електромагніта залежить від сили струму, кількості витків та матеріалу осердя. Для зміни полюсів потрібно змінити напрямок струму в обмотці.`}
+function copyReport(){const t=reportText();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>document.getElementById('copyStatus').textContent='Звіт скопійовано.').catch(()=>fallbackCopy(t))}else fallbackCopy(t)}
+function fallbackCopy(t){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();document.getElementById('copyStatus').textContent='Звіт скопійовано.'}
+function downloadReport(){const blob=new Blob([reportText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='electro-lab-zvit.txt';a.click();URL.revokeObjectURL(a.href)}
+</script>
+</body>
+</html>
