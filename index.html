@@ -95,7 +95,7 @@ button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padd
           <button class="ghost" onclick="window.print()">Друк</button>
           <button class="ghost" onclick="location.reload()">Нова спроба</button>
         </div>
-        <p class="small muted" id="copyStatus" aria-live="polite"></p>
+        <p class="small muted" id="copyStatus" aria-live="polite"></p><p class="small muted" id="sheetsStatus" aria-live="polite">Надсилання результатів до Google Sheets буде доступне після налаштування вчителем.</p><button class="secondary" id="retrySheets" onclick="submitResultsToSheets(true)" style="display:none">Повторити надсилання</button>
       </div>
     </div>
   </section>
@@ -103,7 +103,8 @@ button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padd
 </div>
 
 <script>
-const state={name:'',klass:'',level:0,score:0,awards:[false,false,false,false,false,false],attempts:{},answers:{},data:{},started:false};
+const SHEETS_WEB_APP_URL = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const state={name:'',klass:'',level:0,score:0,awards:[false,false,false,false,false,false],attempts:{},answers:{},data:{},started:false,attemptId:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(16).slice(2))};
 const levelNames=['Запуск системи','Контроль струму','Більше витків','Секрет осердя','Фінальне випробування'];
 const points=[2,2,2,2,2,2];
 function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active')}
@@ -168,7 +169,11 @@ function finish(){state.level=5;updateStats();document.getElementById('finalStud
 const rows=[['Запуск системи',state.awards[0]?'Виконано · 2 бали':'Не зараховано'],['Сила струму',state.awards[1]?'Виконано · 2 бали':'Не зараховано'],['Кількість витків',state.awards[2]?'Виконано · 2 бали':'Не зараховано'],['Матеріал осердя',state.awards[3]?'Виконано · 2 бали':'Не зараховано'],['Фінальне випробування',state.awards[4]?'Виконано · 2 бали':'Не зараховано'],['Контрольні запитання',state.awards[5]?'Виконано · 2 бали':'Частково / не зараховано']];
 document.getElementById('finalResults').innerHTML=rows.map(r=>`<div class="resultrow"><span>${r[0]}</span><strong>${r[1]}</strong></div>`).join('');
 document.getElementById('conclusionList').innerHTML='<li>Електромагніт — це котушка зі струмом, магнітна дія якої може посилюватися осердям.</li><li>Для зміни полюсів потрібно змінити напрямок струму в котушці.</li><li>Зі збільшенням сили струму магнітна дія посилюється.</li><li>Зі збільшенням кількості витків магнітна дія посилюється.</li><li>Залізне осердя підсилює магнітну дію порівняно з дерев’яним.</li>';
-document.getElementById('feedbackFinal').textContent=grade+' Підсумкова оцінка розрахована за виконаними рівнями та контрольними завданнями.';show('screen-final')}
+document.getElementById('feedbackFinal').textContent=grade+' Підсумкова оцінка розрахована за виконаними рівнями та контрольними завданнями.';show('screen-final');submitResultsToSheets()}
+
+function gradeLabel(score){return score>=11?'Відмінно':score>=9?'Дуже добре':score>=7?'Добре':'Потребує доопрацювання'}
+function buildSubmission(){return {schemaVersion:1,attemptId:state.attemptId,submittedAt:new Date().toISOString(),student:{name:state.name,class:state.klass},score:state.score,maxScore:12,grade:gradeLabel(state.score),answers:state.answers,attempts:state.attempts,awards:state.awards,data:state.data,experiments:{current:state.data.curr||{},turns:{coil40Clips:5,coil80Clips:9,currentA:1.5,core:'iron'},core:{ironClips:10,woodClips:2},finalConfiguration:state.data.finalConfig||null},report:reportText()}}
+async function submitResultsToSheets(isRetry=false){const status=document.getElementById('sheetsStatus'),retry=document.getElementById('retrySheets');if(!status)return;if(!SHEETS_WEB_APP_URL||SHEETS_WEB_APP_URL.includes('PASTE_GOOGLE_APPS_SCRIPT')){status.textContent='Google Sheets ще не підключено. Потрібно вставити URL вебзастосунку Apps Script у налаштування сайту.';retry.style.display='none';return}status.textContent=isRetry?'Повторно надсилаємо результати…':'Надсилаємо результати до таблиці…';retry.style.display='none';try{await fetch(SHEETS_WEB_APP_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(buildSubmission())});status.textContent='Запит надіслано. Перевір таблицю Google Sheets, щоб підтвердити появу запису.';retry.style.display='inline-block'}catch(error){status.textContent='Не вдалося надіслати дані. Перевір підключення до інтернету та повтори спробу.';retry.style.display='inline-block'}}
 function reportText(){const d=new Date().toLocaleDateString('uk-UA');return `ELECTRO LAB — Лабораторна робота № 4\nТема: Виготовлення електромагніта та вивчення його магнітного поля\nУчень: ${state.name}\nКлас: ${state.klass}\nДата: ${d}\nРезультат: ${state.score}/12 балів\n\nРезультати досліджень:\n- Сила струму 0,5 А та 1,5 А: ${state.data.curr?JSON.stringify(state.data.curr):'не зафіксовано'}\n- Порівняння 40 та 80 витків: 80 витків дають сильнішу магнітну дію.\n- Осердя: залізо підсилює магнітну дію порівняно з деревом.\n- Фінальна конфігурація: ${state.data.finalConfig?`${state.data.finalConfig.i} А, ${state.data.finalConfig.n} витків, ${state.data.finalConfig.core==='iron'?'залізне осердя':'дерев’яне осердя'}, умовна дія ${state.data.finalConfig.power}`:'не виконано'}\n\nВисновок: магнітна дія електромагніта залежить від сили струму, кількості витків та матеріалу осердя. Для зміни полюсів потрібно змінити напрямок струму в обмотці.`}
 function copyReport(){const t=reportText();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>document.getElementById('copyStatus').textContent='Звіт скопійовано.').catch(()=>fallbackCopy(t))}else fallbackCopy(t)}
 function fallbackCopy(t){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();document.getElementById('copyStatus').textContent='Звіт скопійовано.'}
